@@ -12,15 +12,6 @@ httplib2==0.9.1
 idna==2.0
 numpy==1.18.2
 oauthlib==1.0.3
-python-apt==1.1.0b1+ubuntu0.16.4.8
-python-debian==0.1.27
-python-qt-binding==0.3.4
-python-systemd==231
-pyxdg==0.25
-qt-dotgraph==0.3.11
-qt-gui==0.3.11
-qt-gui-cpp==0.3.11
-qt-gui-py-common==0.3.11
 requests==2.9.1
 resource-retriever==1.12.4
 rosbag==1.12.14
