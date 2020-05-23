@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section mt-2">
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + doubt.author.image_file) }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{{ url_for('user_detail', username=doubt.author.username) }}">{{ doubt.author.username }}</a>
+        <small class="text-muted ">{{ doubt.date_posted.strftime('%Y-%m-%d, %H:%M') }}</small>
+        {% if doubt.author == current_user %}
+          <div class="mb-1">
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_doubt', doubt_id=doubt.id) }}">Update</a>
+            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+          </div>
+        {% endif %}
+      </div>
+      <h2 class="article-title">{{ doubt.title }}</h2>
+      <p class="article-content">{{ doubt.content }}</p>
+    </div>
+  </article>
+  <div class="comment-form">
+        <h4>Post Comment</h4>
+        <form method="POST">
+            <div class="form-group">
+                <textarea class="form-control mb-10" rows="2" name="message" placeholder="Message" required=""></textarea>
+            </div>
+            <button type="submit" class="btn btn-secondary btn-sm mt-1 mb-1">Post Comment</button>
+        </form>
+    </div>
+            <legend class="border-bottom mb-2 mt-2">Comments</legend>
+            
+            {% for comment in comments %}
+            <article class="media content-section mb-4 mt-4"> 
+
+            <a class="mr-3" href="{{ url_for('user_detail', username=comment.user_name) }}" style="text-decoration: none;margin-left: -0.5rem; " onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#0b8caf'">{{ comment.user_name }}</a> 
+            <small class="text-secondary">{{ comment.date_posted.strftime('%Y-%m-%d, %H:%M') }}</small>  
+            <div class="ml-2">
+              {{ comment.message }}
+            </div>
+           
+                    {% if comment.user_name == current_user.username %}
+                                 <div class="ml-2">
+                                    <form action="{{ url_for('delete_comment',comment_id=comment.id,doubt_id=doubt.id) }}" method="POST">
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                  </form>
+                                 </div>
+                    {% endif %}          
+            </article>   
+            {% endfor %}
+
+  <!-- for doubt delete -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete_doubt', doubt_id=doubt.id) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

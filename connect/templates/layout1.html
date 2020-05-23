@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>Connect KGP</title>
+    {% else %}
+        <title>Connect KGP</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header fixed-top">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel ">
+        <div class="container">
+          <img src="static/profile_pics/default.jpg" height="50px" width="50px" style="border-radius: 0.5rem">
+          
+          <i><div class="mr-3 ml-2" style="color: white;font-weight: bold;font-size: 1.3rem; " title="Connect KGP">Connect KGP</div></i>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ml-5" id="navbarToggle">
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav ">
+                <a class="nav-item nav-link " href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link ml-3" href="{{ url_for('register') }}">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+       <div class="col-md-4">
+          <div class="content-section">
+            <h3>Connect KGP</h3>
+            <p class='text-muted'><!-- Message from Developer deskof Connect KGP --><!-- You don't need a reason to help people --> Life is better when you help people reach their goals and you expect nothing in return
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light"><center>Welcome </center><b>{{ current_user.username }}</b> </li>
+                <li class="list-group-item list-group-item-light">Is this your first time here? <br> You'll need to take a minute to create a new Account for yourself on this web site</li>
+                
+               <li class="list-group-item list-group-item-light">Server Time :
+                 <body onLoad="initClock()">
+
+                            <div id="timedate">
+                                <a id="mon">January</a>
+                                <a id="d">1</a>,
+                                <a id="y">0</a>&nbsp;
+                                <a id="h">12</a> :
+                                <a id="m">00</a>:
+                                <a id="s">00</a>
+                            </div>
+               </li>
+              <!-- <li class="list-group-item list-group-item-light">Sumit kumar Yadav</li>
+              <li class="list-group-item list-group-item-light">Life is better when you help people reach their goals and you expect nothing in return</li>
+                <li class="list-group-item list-group-item-light">Computer Science and Engineering</li>
+                <li class="list-group-item list-group-item-light">IIT Kharagpur</li>
+                 <li class="list-group-item list-group-item-light">Competitive Programmer</li>
+               <li class="list-group-item list-group-item-light">Software Developer </li>  -->
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="border-top mb-2 mt-5 " style="font-size: 1.2rem;font-style: italic;margin-bottom: 2rem;padding-bottom:1.3rem;padding-top: 0.5rem;">
+      <center>
+        <a href="{{ url_for('about') }}" class="mr-3" style="text-decoration: none;">Connect KGP</a>&copy; Copyright 2020 <a href="{{ url_for('about') }}" class="ml-2" style="text-decoration: none;">SUMIT &nbsp;KUMAR &nbsp;YADAV</a>
+      </center>
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      Number.prototype.pad = function(n) {
+            for (var r = this.toString(); r.length < n; r = 0 + r);
+            return r;
+        };
+      function updateClock() {
+            var now = new Date();
+           
+             var     sec = now.getSeconds(),
+                min = now.getMinutes(),
+                hou = now.getHours(),
+                mo = now.getMonth(),
+                dy = now.getDate(),
+                yr = now.getFullYear();
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var tags = ["mon", "d", "y", "h", "m", "s"],
+                corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2)];
+            for (var i = 0; i < tags.length; i++)
+                document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
+        }
+
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()", 1);
+        }
+    </script>
+</body>
+</html>

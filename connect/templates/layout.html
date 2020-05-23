@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-social.css') }}">
+
+    {% if title %}
+        <title>{{title}}</title>
+    {% else %}
+        <title>Connect KGP</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header fixed-top">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel ">
+        <div class="container">
+<!--         <img src="static/profile_pics/default.jpg" height="40px" width="50px">
+ -->          <i><div class="mr-3" style="color: white;font-weight: bold;font-size: 1.3rem; " title="Connect KGP">Connect KGP</div></i>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link mr-2" href="{{ url_for('home') }}">Home</a>
+                <a class="nav-item nav-link mr-2" href="{{ url_for('account') }}">Account</a>
+                <a class="nav-item nav-link mr-2" href="{{ url_for('new_doubt') }}">Doubts & Discussion</a> 
+                <a class="nav-item nav-link mr-2" href="{{ url_for('new_job') }}">Job/Internship</a>
+                <a class="nav-item nav-link mr-2" href="{{ url_for('new_collab') }}">Collab</a>
+                <a class="nav-item nav-link mr-2" href="{{ url_for('messages') }}">Messages
+                {% set new_messages=current_user.new_messages() %}
+                <span id="message_count" class="badge badge-dark" style="visibility: 
+                {% if new_messages %}visible 
+                {% else %}hidden{% endif %};">
+                  {{ new_messages }}
+                  
+                </span>
+                </a>
+                <a class="nav-item nav-link ml-1" href="{{ url_for('logout') }}">Logout</a>
+                <a class="nav-item nav-link ml-2" href="{{ url_for('about') }}">About</a> 
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-9">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-3">
+          <div class="content-section">
+            <h3><i>Connect KGP</i></h3>
+            <p class='text-muted'><!-- Message from Developer deskof Connect KGP --><!-- You don't need a reason to help people --><!--  Life is better when you help people reach their goals and you expect nothing in return. -->
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Welcome, <i><b>{{ current_user.username }}</b> </i></li>
+                <li class="list-group-item list-group-item-light">{{ info }}
+                  <ul>
+                  {% for a in showskill %}
+                  <li> {{ a }}</li>
+                  {% endfor %}
+               </ul>
+
+
+                 </li>
+                <li class="list-group-item list-group-item-light">Is this your first time here? <br>Checkout About page for manual of this Software </li>
+                
+               <li class="list-group-item list-group-item-light">Server Time :
+                 <body onLoad="initClock()">
+
+                            <div id="timedate">
+                                <a id="mon">January</a>
+                                <a id="d">1</a>,
+                                <a id="y">0</a><br />
+                                <a id="h">12</a> :
+                                <a id="m">00</a>:
+                                <a id="s">00</a>
+                            </div>
+               </li>
+              <!-- <li class="list-group-item list-group-item-light">Sumit kumar Yadav</li>
+              <li class="list-group-item list-group-item-light">Life is better when you help people reach their goals and you expect nothing in return</li>
+                <li class="list-group-item list-group-item-light">Computer Science and Engineering</li>
+                <li class="list-group-item list-group-item-light">IIT Kharagpur</li>
+                 <li class="list-group-item list-group-item-light">Competitive Programmer</li>
+               <li class="list-group-item list-group-item-light">Software Developer </li>  -->
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      //Get the button
+      var mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script>
+      Number.prototype.pad = function(n) {
+            for (var r = this.toString(); r.length < n; r = 0 + r);
+            return r;
+        };
+      function updateClock() {
+            var now = new Date();
+           
+             var     sec = now.getSeconds(),
+                min = now.getMinutes(),
+                hou = now.getHours(),
+                mo = now.getMonth(),
+                dy = now.getDate(),
+                yr = now.getFullYear();
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var tags = ["mon", "d", "y", "h", "m", "s"],
+                corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2)];
+            for (var i = 0; i < tags.length; i++)
+                document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
+        }
+
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()", 1);
+        }
+    </script>
+    <div class="border-top mb-2 mt-5 " style="font-size: 1.2rem;font-style: italic;margin-bottom: 2rem;padding-bottom:1.3rem;padding-top: 0.5rem;">
+      <center>
+        <a href="{{ url_for('about') }}" class="mr-3" style="text-decoration: none;">CONNECT &nbsp;KGP</a>&copy; Copyright 2020 <a href="{{ url_for('about') }}" class="ml-2" style="text-decoration: none;">SUMIT &nbsp;KUMAR &nbsp;YADAV</a>
+      </center>
+    </div>
+</body>
+</html>

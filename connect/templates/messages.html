@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section mt-2">
+    <h1><center>Messages</center></h1>
+   <center> <div class="form-group">
+        <a class="btn btn-outline-info" href="{{url_for('messages')}}">Received Messages</a>
+        <a class="btn btn-outline-info ml-3" href="#send">Sent Messages</a>
+    </div>
+    </center>
+
+    
+    <h3 class="mb-2"><u>Received Messages</u> ({{ r }}) </h3>
+      {% for user in user_list %}
+      <article class="media content-section mt-1">   
+          <a href="{{ url_for('personalchat',username=user[0].username) }}" class="mr-2" style="text-decoration: none;margin-left: -0.5rem;" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#0b8caf'"> {{ user[0].username }}</a> 
+
+
+          <p class="text-secondary ml-1">{{ user[1].timestamp.strftime('%d-%m, %H:%M') }}</p> &nbsp; {{ user[1].body }}
+          <div class="ml-2">
+              
+            <a class="btn btn-primary" href="{{ url_for('send_message',recipient=user[0].username) }}">Reply</a>
+           </div>
+      </article>
+      {% endfor %}
+
+
+    <h3 id="send" class="mb-2 mt-2"><u>Sent Messages</u> ({{ s }})</h3>
+      {% for user in user_list1 %}
+      <article class="media content-section mb-0 mt-1">  
+          <a href="{{ url_for('personalchat',username=user[0].username) }}" class="mr-2" style="text-decoration: none;margin-left: -0.5rem;" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#0b8caf'"> {{ user[0].username }}</a>
+          <p class="text-secondary ml-1"> {{ user[1].timestamp.strftime('%d-%m, %H:%M') }} </p>&nbsp; {{ user[1].body }}
+           <div class="ml-2">
+              <form action="{{ url_for('delete_chat',chat_id=user[2])   }}" method="POST">
+              <input class="btn btn-danger" type="submit" value="Delete">
+            </form>
+           </div>
+      </article>
+      {% endfor %}
+     
+</div>
+{% endblock content %}
+

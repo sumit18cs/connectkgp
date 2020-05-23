@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>
+  <center>Search Here to Learn Something New</center>
+</h2>
+
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group mb-1">
+                {{ form.search.label(class="form-control-label ") }}
+                {% if form.search.errors %}
+                    {{ form.search(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.search.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.search(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group mb-1" >
+           <center> {{ form.submit(class="btn btn-outline-info") }}</center>
+           
+        </div>
+    </form>
+</div>
+
+{% for user in user_list %}
+    <article class="media content-section mb-3 mt-1"> 
+      <a onMouseOver="this.style.color='black'" onMouseOut="this.style.color='blue'" href="{{ url_for('user_detail',username=user.username) }}" class="mr-4" style="text-decoration: none;color: blue;" title="User Profile"><b><p style="font-size: 1.4rem;">{{ user.username }}</p></b></a> 
+   
+    {% for skill in user.skills %}
+        {% if skill.title==title %} 
+            {{ skill.content }}
+        {% endif %}
+    {% endfor %}
+    </article>
+  
+{% endfor %}
+{% if doubts.total>0 %}
+<h2>
+  Latest Doubts Posted by You
+</h2>
+    {% for doubt in doubts.items %}
+        <article class="media content-section mt-2">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + doubt.author.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{ url_for('user_detail', username=doubt.author.username) }}">{{ doubt.author.username }}</a>
+              <small class="text-muted">{{ doubt.date_posted.strftime('%Y-%m-%d, %H:%M') }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('doubt', doubt_id=doubt.id) }}">{{ doubt.title }}</a></h2>
+            <p class="article-content">{{ doubt.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endif %}
+{% if jobs.total>0 %}
+<h2>
+  Latest Job/Internship Posted by You
+</h2>
+    {% for job in jobs.items %}
+        <article class="media content-section mt-2">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + job.author.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{ url_for('user_detail', username=job.author.username) }}">{{ job.author.username }}</a>
+              <small class="text-muted">{{ job.date_posted.strftime('%Y-%m-%d, %H:%M') }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('job', job_id=job.id) }}">{{ job.title }}</a></h2>
+            <p class="article-content">{{ job.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endif %}
+{% if collabs.total>0 %}
+<h2>
+Latest Collaboration Posted by You
+</h2>
+    {% for collab in collabs.items %}
+        <article class="media content-section mt-2">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + collab.author.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{ url_for('user_detail', username=collab.author.username) }}">{{ collab.author.username }}</a>
+              <small class="text-muted">{{ collab.date_posted.strftime('%Y-%m-%d, %H:%M') }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('collab', collab_id=collab.id) }}">{{ collab.title }}</a></h2>
+            <p class="article-content">{{ collab.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endif %}
+{% endblock content %}
+
+

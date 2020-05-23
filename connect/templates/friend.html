@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section mt-2">
+            <div class="media">
+              <img class="rounded-circle account-img" src="{{ image_file }}">
+              <div class="media-body">
+                <h2 class="account-heading ml-3 mt-2">{{ current_user.username }}</h2>
+                <p class="text-secondary ml-3">{{ current_user.email }}</p>
+              </div>
+            </div>
+
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 mt-2">Following ( {{ current_user.followed.count() }} )</legend>
+                <ol>
+                    {% for users in current_user.followed %}
+                    <div style="font-size: 1.5rem">
+                        <li>
+                            &nbsp;<a onMouseOver="this.style.color='black'" onMouseOut="this.style.color='darkgreen'" class="mr-2" href="{{ url_for('user_detail', username=users.username) }}" style="text-decoration: none;color: darkgreen;">{{ users.username }}</a>
+                        </li>
+                    </div>
+                    {% endfor %}
+                </ol>
+                {% if current_user.username=='sumit_yadav' %}
+                    <legend class="border-bottom mb-4 mt-2">All Users ({{ t }})</legend>
+                    <ol>
+                        {% for user in users %}
+                        <div style="font-size: 1.5rem">
+                            <li>
+                                &nbsp;<a onMouseOver="this.style.color='black'" onMouseOut="this.style.color='darkgreen'" class="mr-2" href="{{ url_for('user_detail', username=user.username) }}" style="text-decoration: none;color: darkgreen;">{{ user.username }}</a>
+                            </li>
+                        </div>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+                
+            </fieldset>
+    </div>
+{% endblock content %}

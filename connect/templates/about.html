@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section mt-2">
+	<h2 class="mt-1">
+	  <center><u><i><b>Connect KGP</b></i></u></center>
+	</h2>
+
+<div class="mt-4 ml-0">
+	<img class="img-fluid" src="static/profile_pics/sumit123.jpg" height="120vw" width="130vw" align="left" style="border-radius: 1.2rem;float: left; border: 1px solid black;">
+	<div style="font-family: 'Sofia', arial;padding-top: 0.8rem;padding-left: 9vw;font-style:italic; ">
+		Hello,
+		My name is Sumit Kumar Yadav. I am a second-year undergraduate student in the Department of Computer Science and Engineering enrolled in its five years integrated dual degree course, Indian Institute of Technology Kharagpur. I am from Varanasi, Uttar Pradesh.
+		<br><br>	
+		<a href="{{ url_for('send_message',recipient='sumit_yadav') }}" class="btn btn-outline-info">
+            Send private message
+        </a>
+        <a href="{{ url_for('user_detail',username='sumit_yadav') }}" class="btn btn-outline-info ml-3" >
+           	View Profile
+        </a>
+    
+        <abc style="padding-right: 100px;font-size: 30px;float: right;">
+        	<a href="https://www.facebook.com/sumit.kumaryadav.737001/" title="Facebook"><i class="fa fa-facebook-official ml-2 mr-2" aria-hidden="true"></i></a>
+		  	<a href="https://www.linkedin.com/in/sumit-kumar-yadav-75273219a" title="Linkedin"><i class="fa fa-linkedin ml-2 mr-2" aria-hidden="true"></i></a>
+		  	<!-- <a href="mailto:email@example.com">Send Email</a> -->
+		  	<a href="mailto:sumitkumar18cs.iitkgp@gmail.com" title="G Mail"><i class="fa fa-envelope ml-2 " aria-hidden="true"></i></a> 
+        </abc>
+	  </div> 
+</div>
+<br><br><br>
+<fieldset>
+    <legend class="border-bottom mb-3">Frequently Asked Questions</legend>
+              
+<ol>
+	<li>
+		<b>What is Connect KGP?</b><br>
+		Connect KGP is the Software to help Students getting information about the best resources/material available for learning any new skill. Apart from that, there is an option for posting doubts, Job/Internship opportunities, and for collaboration to work in a team.
+		This Software is intended to be used by the Students and the Alums of the IITKGP,&nbsp;but other than that anyone can register and make use of it.
+	</li>
+	<li>
+		<b>What is the Main Purpose of this Software?</b><br>
+		It provides a platform to write about all the technical skills that you have and if anybody wants to learn new skills they simply search that skill and get to know about all the resources and material needed for learning that skill.
+	</li>
+	<!-- home page -->
+	<li>
+		<b>What are the different things that we can do on the home page?</b><br>
+		In the Home page, you can search for skill and the search algorithm search the users who have that skills and display that username and the resources/material from where he/she learn that skill in the decreasing order of followers of each user from top to bottom. Apart from this, you can also find all your posts just below the search option.
+	</li>
+	<li>
+		<b>What is the Purpose of Doubts/Discussion?</b><br>
+		Users can post their doubts in the doubt/discussion area and all users can have a discussion on that topic using the comments section given on doubt page and come up with a simplified solution. The discussion area is mainly focused to share the different ideas of the users on any topic so that the whole kgp community can understand that topic in the best possible way.	</li>
+	<li>
+		<b>How does the Job/Internship function work?</b><br>
+		It will allow users to post internship/part-time job opportunities. This feature is basically for the alums. It provides the alums to hire for an intern or a part-time job among the students of his/her college. Similar to doubt/discussion, here also there is a comment section where different users can share their views.
+	</li>
+	<li>
+		<b>How does the Collab function work?</b><br>
+		This feature can be used by any users who want to share their project idea(or need a group of people on any particular domain) and get to know whether some fellow students are interested in collaborating and work together on that project idea. Similar to doubt/discussion, here also there is a comment section where different users can share their views.
+	</li>
+	<li>
+		<b>How end to end Messages work?</b><br>
+		There is an option to send any private message to any user if you need any help from that user but you are only allowed to send a message if both the sender and the recipient user are selected 'YES' to receive messages from another user.	
+		It is advisable not to send a message which contains any private information because the messages are not encrypted end to end. 
+	</li>
+	
+</ol>
+</fieldset>
+</div>	
+ 
+
+ 
+
+ 
+{% endblock %}

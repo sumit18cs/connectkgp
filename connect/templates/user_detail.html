@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section mt-2">
+            <div class="media">
+              <img class="rounded-circle account-img" src="{{ image_file }}">
+              <div class="media-body ml-4 mt-3">
+                <h2 class="account-heading ">{{ user.username }}
+                {% if user.username=='sumit_yadav' %}
+                	<i>(Admin)</i>
+                {% endif %}
+                </h2>
+                {% if user != current_user %}
+                    {% if current_user.support=='Yes' %}
+                        {% if user.support=='Yes' %}
+                            {{ user.email }}
+                            <br>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                
+                {{ user.followers.count() }} followers  ,  {{ user.followed.count() }} following
+              </div>
+            </div>
+
+        	
+        {% if user == current_user %}
+        	<p><a href="{{ url_for('account') }}" class="btn btn-outline-info">Edit your profile</a></p>
+        {% elif not current_user.is_following(user) %}
+       		<p><a href="{{ url_for('follow', username=user.username) }}" class="btn btn-outline-info">Follow</a></p>
+        {% else %}
+        	<p><a href="{{ url_for('unfollow', username=user.username) }}" class="btn btn-outline-info">Unfollow</a></p>
+        {% endif %}
+
+
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 mt-2">Account Info</legend>
+                <b>Roll No. :</b> {{ user.rollno }}<br>
+                <b>Course :</b> {{ user.hall }}<br>
+                <b>Department :</b> {{ user.department }}<br>
+                <b>Hall of Residence :</b> {{ user.hall }}<br>    
+            </fieldset>
+       	
+            {% if user != current_user %}
+                {% if current_user.support=='Yes' %}
+                    {% if user.support=='Yes' %}
+                    <p>
+                        <a href="{{ url_for('send_message',recipient=user.username) }}" class="btn btn-outline-info">
+                            Send private message
+                        </a>
+                        <a href="{{ url_for('personalchat',username=user.username) }}" class="btn btn-outline-info ml-3">
+                            Messages between {{ current_user.username }} and {{ user.username }}
+                        </a>
+                    </p>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            <legend class="border-bottom mb-4 mt-2">Skills</legend>
+            
+                {% for skill in user.skills %}
+                    <article class="media content-section mb-4 mt-4">
+                      <div class="media-body">
+                        <h2><p class="article-content mb-0">{{ skill.title }}</p></h2>
+                        <p class="article-content mb-0">{{ skill.content }}</p>
+                      </div>
+                    </article>
+                {% endfor %}
+                
+               <h2> <a class="mr-2" href="{{ url_for('user_doubts', username=user.username) }}" style="text-decoration: none;" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#0b8caf'">Doubts Posted by {{ user.username }} ({{ doubts.total }})</a></h2>
+
+                <h2><a class="mr-2" href="{{ url_for('user_jobs', username=user.username) }}" style="text-decoration: none;" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#0b8caf'">Job/Internship Posted by {{ user.username }} ({{ jobs.total }})</a></h2>
+                
+                <h2><a class="mr-2" href="{{ url_for('user_collabs', username=user.username) }}" style="text-decoration: none;" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='#0b8caf'">Collaboration Posted by {{ user.username }} ({{ collabs.total }})</a> </h2>          
+    </div>
+{% endblock content %}

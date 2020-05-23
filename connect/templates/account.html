@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section mt-2">
+            <div class="media">
+              <img class="rounded-circle account-img" src="{{ image_file }}">
+              <div class="media-body">
+                <h2 class="account-heading ml-3 mt-2">{{ current_user.username }}</h2>
+                <p class="text-secondary ml-3">{{ current_user.email }}</p>
+              </div>
+            </div>
+
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 mt-2">Account Info</legend>
+                {% if current_user.name!='Not Given' %}
+                    <b>Name :</b> {{ current_user.name }}<br>
+                {% endif %}
+                <b>Roll No. :</b> {{ current_user.rollno }}<br> 
+                <b>Department :</b> {{ current_user.department }}<br>
+                <b>Hall of Residence :</b> {{ current_user.hall }}<br>
+<!--                 <b>Joining Year of IITKGP</b> :- {{ current_user.name }}<br>
+ -->                
+                <b>Wants to Receive Messages :</b> {{ current_user.support }}<br>
+                
+                
+            </fieldset>
+            <div class="form-group">
+                <a class="btn btn-outline-info" href="{{ url_for('edit_account' )}}">Edit Details</a>
+                <a class="btn btn-outline-info ml-3" href="{{ url_for('friend' )}}">Following ({{ current_user.followed.count() }}) </a>
+            </div>
+            <legend class="border-bottom ">Skills</legend>
+            
+                {% for skill in current_user.skills %}
+                    <article class="media content-section mt-3 mb-2">
+                      <div class="media-body">
+                        <h2><a style="color: green;" class="article-title" href="{{ url_for('skill', skill_id=skill.id) }}" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='green'">{{ skill.title }}</a></h2>
+                        <p class="article-content mb-0">{{ skill.content }}</p>
+                      </div>
+                    </article>
+                
+                {% endfor %}
+            <div class="form-group mt-3">
+            
+                <a class="btn btn-outline-info" href="{{ url_for('new_skill' )}}">Add Skill</a>
+            
+            </div>           
+    </div>
+{% endblock content %}

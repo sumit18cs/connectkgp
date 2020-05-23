@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section mt-2">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-1 ">{{ legend }}</legend>
+            <div class="form-group mb-2">
+                {{ form.title.label(class="form-control-label") }}
+                {% if form.title.errors %}
+                    {{ form.title(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.title.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.title(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group mb-2">
+                {{ form.content.label(class="form-control-label") }}
+                {% if form.content.errors %}
+                    {{ form.content(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.content.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.content(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group mb-3">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+
+
+    <h2>
+      General Collaboration Post
+    </h2>
+        {% for collab in collabs.items %}
+            <article class="media content-section mt-3">
+              <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + collab.author.image_file) }}">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="{{ url_for('user_detail', username=collab.author.username) }}">{{ collab.author.username }}</a>
+                  <small class="text-muted">{{ collab.date_posted.strftime('%Y-%m-%d, %H:%M') }}</small>
+                </div>
+                <h2><a class="article-title" href="{{ url_for('collab', collab_id=collab.id) }}">{{ collab.title }}</a></h2>
+                <p class="article-content">{{ collab.content }}</p>
+              </div>
+            </article>
+        {% endfor %}
+        {% for page_num in collabs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+          {% if page_num %}
+            {% if collabs.page == page_num %}
+              <a class="btn btn-info mb-4" href="{{ url_for('new_collab', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+              <a class="btn btn-outline-info mb-4" href="{{ url_for('new_collab', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+          {% else %}
+            ...
+          {% endif %}
+        {% endfor %}
+
+</div>
+{% endblock content %}
