@@ -1,18 +1,9 @@
 six==1.10.0
-system-service==0.3
 tf==1.11.9
 tf-conversions==1.11.9
 tf2-kdl==0.5.20
 tf2-py==0.5.20
 tf2-ros==0.5.20
-topic-tools==1.12.14
-ubuntu-drivers-common==0.0.0
-ufw==0.35
-unattended-upgrades==0.1
-unity-tweak-tool==0.0.7
-urllib3==1.13.1
-usb-creator==0.3.0
-Werkzeug==1.0.0
 
 xacro==1.11.3
 xdiagnose==3.8.4.1
