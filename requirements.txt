@@ -1,10 +1,4 @@
 six==1.10.0
-tf==1.11.9
-tf-conversions==1.11.9
-tf2-kdl==0.5.20
-tf2-py==0.5.20
-tf2-ros==0.5.20
-
 xacro==1.11.3
 xdiagnose==3.8.4.1
 xkit==0.0.0
