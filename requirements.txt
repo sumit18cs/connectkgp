@@ -10,8 +10,6 @@ Jinja2==2.11.1
 html5lib==0.999
 httplib2==0.9.1
 idna==2.0
-message-filters==1.12.14
-
 numpy==1.18.2
 oauthlib==1.0.3
 onboard==1.2.0
