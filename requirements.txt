@@ -1,8 +1,6 @@
 checkbox-support==0.22
 click==7.1.1
 cryptography==1.2.3
-cv-bridge==1.12.8
-defer==1.0.6
 diagnostic-analysis==1.9.3
 diagnostic-common-diagnostics==1.9.3
 diagnostic-updater==1.9.3
