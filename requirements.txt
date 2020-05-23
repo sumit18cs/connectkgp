@@ -10,13 +10,6 @@ Jinja2==2.11.1
 html5lib==0.999
 httplib2==0.9.1
 idna==2.0
-
-language-selector==0.1
-laser-geometry==1.6.4
-louis==2.6.4
-lxml==3.5.0
-Mako==1.0.3
-MarkupSafe==0.23
 message-filters==1.12.14
 
 numpy==1.18.2
