@@ -12,14 +12,6 @@ httplib2==0.9.1
 idna==2.0
 numpy==1.18.2
 oauthlib==1.0.3
-pluginlib==1.11.3
-protobuf==3.6.1
-pyasn1==0.1.9
-pycups==1.9.73
-pycurl==7.43.0
-pygobject==3.20.0
-PyJWT==1.3.0
-pyparsing==2.0.3
 python-apt==1.1.0b1+ubuntu0.16.4.8
 python-debian==0.1.27
 python-qt-binding==0.3.4
