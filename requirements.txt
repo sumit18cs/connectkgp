@@ -1,8 +1,4 @@
 six==1.10.0
-smach==2.0.1
-smach-ros==2.0.1
-smclib==1.8.3
-
 system-service==0.3
 tf==1.11.9
 tf-conversions==1.11.9
