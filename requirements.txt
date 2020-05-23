@@ -4,7 +4,6 @@ cryptography==1.2.3
 Flask==1.1.1
 Flask-SQLAlchemy==2.4.1
 Flask-WTF==0.14.3
-dnspython==1.16.0
 gencpp==0.6.0
 geneus==2.2.6
 genlisp==0.4.16
