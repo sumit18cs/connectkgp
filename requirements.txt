@@ -1,6 +1,5 @@
 checkbox-support==0.22
 click==7.1.1
-command-not-found==0.3
 cryptography==1.2.3
 cv-bridge==1.12.8
 defer==1.0.6
