@@ -10,10 +10,7 @@ Jinja2==2.11.1
 html5lib==0.999
 httplib2==0.9.1
 idna==2.0
-interactive-markers==1.11.4
-itsdangerous==1.1.0
 
-kazam==1.4.5
 language-selector==0.1
 laser-geometry==1.6.4
 louis==2.6.4
