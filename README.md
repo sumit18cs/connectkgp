@@ -43,7 +43,7 @@ Make sure you have Python 3.6 or higher installed on your system to run the appl
 5.  Now type the following to install all the dependencies: `pip install -r requirements.txt` 
 6.  Now finally run: `python application.py`
 
-- **Window 10**
+- **Windows 10**
 1.  Install venv library to install the dependencies in a virtual environment using the command:   `pip install venv`
 2.  Download the zipped folder and then unzip it
 3.  Open a Command Prompt and navigate to the folder where you have unzipped it and enter that directory
