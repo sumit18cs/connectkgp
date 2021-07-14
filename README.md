@@ -29,42 +29,28 @@
  - Flask-mail
 
 # Steps to Run it locally:
-I am using Ubuntu 16.04 LTS and python version needed for this software is minimum 3.61. Open Terminal and install python virtual environment using the below mentioned code:python3 -m venv newwhere, ‘new’ is the virtual environment name.2. Go to above created virtual environment directory and start virtual environment:  cd newsource bin/activate3.  Now their is a folder name “kgp” in the submitted ZIP file. Copy paste this folder into the “new”folder which is created earlier.4. Go inside this foldercd kgp5. Now write the below code in terminal and make sure your internet is working properly otherwise their is an error. Reuirements.txt contain all the dependencies required for this software.pip install -r requirements.txt6. Everything is done now start applicaionpython app.pyNow, there is a link in the terminal just open link in the browser.(ie, local host link)
-- Ubuntu 16.04 LTS (Make sure you have Python 3.6 or higher installed on your system to run the application)
+
+## Prerequisites
+Make sure you have Python 3.6 or higher installed on your system to run the application. 
+
+## Steps:
+
+- Ubuntu 16.04 LTS 
 1.  First download the zipped folder and then unzip it
 2.  Install python virtual environment using the below mentioned code: `python3 -m venv new`, new is the virtual environment name
 3.  Go to above created virtual environment directory and start virtual environment:  `cd new`  `source bin/activate`
 4.  Navigate to the folder where you have unzipped it and enter that directory
-5.  Now type the following to install all the dependencies:
-   `pip install -r requirements.txt` 
-6.  Now finally run:
-   `python application.py`
+5.  Now type the following to install all the dependencies: `pip install -r requirements.txt` 
+6.  Now finally run: `python application.py`
 
+- Window 10
+1.  Install venv library to install the dependencies in a virtual environment using the command:   `pip install venv`
+2.  Download the zipped folder and then unzip it
+3.  Open a Command Prompt and navigate to the folder where you have unzipped it and enter that directory
+4.  Create a virtual environment using the following commands:   `virtualenv  kgp`
+5.  Activate the environment:   `kgp\Scrips\activate`
+6.  Now type the following to install all the dependencies:  `pip install -r requirements.txt` 
+7.  Now finally run:  `python application.py`
 
-## Prerequisites
-Make sure you have Python 3.6 or higher installed on your system to run the application. 
-- (Window)
-Also install venv library to install the dependencies in a virtual environment using the command:
-pip install venv
-
-## Steps:
-
-1. First download the zipped folder Code.zip and then unzip it. 
-2. Open a Command Prompt/Terminal and navigate to the folder where you have unzipped it and enter that directory.
-3. Create a virtual environment using the following commands:
-   `virtualenv  t4sne`
-4. Then to activate the environment type:
-   For windows:
-   `t4sne\Scrips\activate`
-
-   For Mac/Linux:
-   `source t4sne/bin/activate`
-   Now type the following to install all the dependencies:
-   `pip install -r requirements.txt` 
-   Wait for it to install everything.
-5. Next type:
-   `pipwin install pyaudio`
-6. Now finally run:
-   `python application.py`
 
 Finally, open any browser and type in localhost:5000 or 127.0.0.1:500
