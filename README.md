@@ -1,19 +1,14 @@
-# connectkgp
-Connect KGP is a web-based application to provide Educational resources to the college community.
+# Connect KGP
+# Connect KGP is a web-based application to provide Educational resources to the college community.
 
 ![**Slideshow**](/Slideshow.gif)
 
-## Motivation
-Over 5% of the world’s population(430 million people) require rehabilitation to address their ‘disabling’ hearing loss (432 million adults and 34 million children). 
-They more often than not have imperfect development of speech & language
-It is estimated that by 2050 over 700 million people – or one in every ten people – will have disabling hearing loss.
-
-People with hearing disabilities regularly face difficulties while having conversations on different occasions. 
-A hearing aid is a wonderful device, helpful for those people whose hearing disabilities can be cured using it and those who can afford it. But a lot of people’s disabilities cannot be cured using a hearing aid or they cannot afford it. For such people, the only option is either communicating using sign language and using lip-reading or a combination of both.
-
-Sign language has evolved manifolds over the years and it allows for effective communication but the huge catch is not many people in the world sign language primarily because it is not that easy to learn and can take years to gain even a passable proficiency. 
-
-Now the benefit of lip reading is that the other person does not need to learn sign language to communicate and they can do so by correctly enunciating their speech. 
+## Overview
+ - Developed a web-based application using Flask framework to provide educational resources to the college community.
+ - Designed Graphical User Interface for a signup, login, homepage, chat window, and discussion forum.
+ - Created SQLAlchemy database and tables to store user personal details, their skills, messages, and their posts.
+ - Implemented followers-based search and skill-based trending on the home page.
+ - Hosted the web application at Heroku (Cloud-based Application Platform) (Link: https://kgpconnect.herokuapp.com)
 
 ## Features
 
@@ -27,12 +22,13 @@ While watching videos a person with a hearing disability often can’t understan
 ## Softwares and Libraries Used:
  - Python 
  - Flask  
- - SQLAlchemy 
  - HTML5 
  - CSS3 
+ - SQLAlchemy 
  - Javascript
  - Bootstrap
- - Pyaudio
+ - Bcrypt
+ - Flask-mail
 
 # Future Enhancements:
 
