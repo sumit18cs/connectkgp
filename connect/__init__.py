@@ -18,7 +18,6 @@ app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'connectkgp.iitkgp@gmail.com'
 app.config['MAIL_PASSWORD'] = ''  
-#password recovery is not working because i am not interested in sharing my email password.
 mail = Mail(app)
 
 from connect import routes
