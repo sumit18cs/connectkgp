@@ -1,5 +1,5 @@
 # Connect KGP
-## Connect KGP is a web-based application to provide Educational resources to the college community.
+## Connect KGP is a one-stop platform where students get all the information they need, from academics to placements. It’s designed to cater to every career path and skill and can be helpful for people looking for the right resources. It essentially is a social media platform. Only the media here is all things academics.
 
 ![**Slideshow**](/Slideshow.gif)
 
@@ -11,7 +11,8 @@
  - Hosted the web application at Heroku (Cloud-based Application Platform) (Link: https://kgpconnect.herokuapp.com)
 
 # Features 
- - **Search and Personalized dashboard:** It provides a platform to write about all the technical skills that you have and if anybody wants to learn new skills they simply search that skill and get to know about all the resources and material needed for learning that skill.  
+ - **Search and Personalized dashboard:** It provides a platform to write about all the technical skills that you have and if anybody wants to learn new skills they simply search that skill and get to know about all the resources and material needed for learning that skill. Get curated resources on any skill that you want to learn.
+ -  **CDC Diaries:** A compendium of interview experience and tips that make it easier for students to prepare before an interview.
  - **Doubts and Disussion:** Users can post their doubts in the doubt/discussion area and all users can have a discussion on that topic using the comments section given on doubt page and come up with a simplified solution. The discussion area is mainly focused to share the different ideas of the users on any topic so that the whole college community can understand that topic in the best possible way. 
  - **Job and Internship:** It will allow users to post internship/part-time job opportunities. This feature is basically for the alums. It provides the alums to hire for an intern or a part-time job among the students of his/her college. Similar to doubt/discussion, here also there is a comment section where different users can share their views.
  - **Collaboration:** This feature can be used by any users who want to share their project idea(or need a group of people on any particular domain) and get to know whether some fellow students are interested in collaborating and work together on that project idea. Similar to doubt/discussion, here also there is a comment section where different users can share their views.
