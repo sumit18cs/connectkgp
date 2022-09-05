@@ -1,5 +1,5 @@
 # Connect KGP
-## Connect KGP is a one-stop platform where students get all the information they need, from academics to placements. It’s designed to cater to every career path and skill and can be helpful for people looking for the right resources. It essentially is a social media platform. Only the media here is all things academics.
+## Connect KGP is a one-stop platform where students get all the information they need, right from academics to placements. It’s designed to cater to every career path and skill and can be helpful for people looking for the right resources. It essentially is a social media platform. Only the media here is all things academics.
 
 ![**Slideshow**](/Slideshow.gif)
 
